@@ -13,16 +13,33 @@ $url.= $_SERVER['REQUEST_URI'];
 } 
 //send_mail.php
 
+$path=getcwd();
+// echo var_dump($d);
+$allpath= str_replace('wp-content/plugins/Bulk_sms_send','',$path);
+require($allpath.'wp-load.php');
+
 
 
 
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-include_once($_SERVER['DOCUMENT_ROOT'].'/wordpress/wp-config.php' );
+// define('ROOTDIR',plugin_dir_path(__FILE__));
+// echo"ook";
+// echo $_SERVER['DOCUMENT_ROOT'];
+// $path= ROOTDIR;
+
+// require_once($_SERVER['DOCUMENT_ROOT'].'/wordpress/wp-load.php' );
+
+// require_once($allpath.'wp-load.php' );
+// echo $_SERVER['DOCUMENT_ROOT'].'/wordpress/wp-load.php';
+// echo "<br>";
+// echo $allpath.'wp-load.php';
+// die;
 
 if (isset($_GET['id'])){
     $id=$_GET['id'];
+    // echo "<script> alert('Unsubscribe Successfully')</script>";
     global $wpdb;
     global $table_prefix;
     $table=$table_prefix.'Sms_data';
@@ -50,7 +67,7 @@ if(isset($_POST['email_data']))
     $mail->Port = 587;        //Sets the default SMTP server port
     $mail->SMTPAuth = true;       //Sets SMTP authentication. Utilizes the Username and Password variables
     $mail->Username = 'indiamanohar26@gmail.com';     //Sets SMTP username
-    $mail->Password = 'manohar@123';     //Sets SMTP password
+    $mail->Password = 'Manohar@123@';     //Sets SMTP password
     $mail->SMTPSecure = 'tls';       //Sets connection prefix. Options are "", "ssl" or "tls"
     $mail->setFrom("indiamanohar26@gmail.com"); //Sets the From email address for the message
     $mail->FromName = 'Manohar';     //Sets the From name of the message
