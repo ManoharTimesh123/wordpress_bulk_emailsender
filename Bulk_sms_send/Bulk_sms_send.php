@@ -47,8 +47,9 @@ function sms_send(){
 
 }
 function sms_send2(){
-    include('sms_send.php');
+    require_once('sms_send.php');
 
 }
+
 
 ?>
